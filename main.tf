@@ -6,8 +6,8 @@ provider "aws" {
 terraform {
   backend "s3" {
     # Lembre de trocar o bucket para o seu, não pode ser o mesmo nome
-    bucket = "iaasweek-tfstates-terraform"
-    key    = "terraform-test.tfstate"
+    bucket = "igor.terraform"
+    key    = "backend/terraform.tfstate"
     region = "us-east-1"
   }
 }

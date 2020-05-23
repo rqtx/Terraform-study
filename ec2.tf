@@ -3,10 +3,10 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["IaaSWeek-${var.hash_commit}"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-arm64-server-20200430"]
   }
 
-  owners = ["777015859311"] # Gomex ID, não mude sem mudar o filtro
+  owners = ["099720109477"] # Canonical
 }
 
 data "aws_region" "current" {}
@@ -19,7 +19,7 @@ resource "aws_key_pair" "deployer" {
 resource "aws_instance" "web" {
   count                       = var.number_instaces
   ami                         = data.aws_ami.ubuntu.id
-  instance_type               = "t2.micro"
+  instance_type               = var.instance_type
   subnet_id                   = aws_subnet.ansible.id
   vpc_security_group_ids      = [aws_security_group.ansible.id]
   associate_public_ip_address = true

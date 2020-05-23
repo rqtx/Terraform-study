@@ -33,4 +33,4 @@ terraform-destroy: ## Uses tfplan to apply the changes on AWS
 	docker run --rm -v $$PWD:/app -v $$HOME/.ssh:/root/.ssh -w /app -e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY hashicorp/terraform:$(TERRAFORM_VERSION) destroy -auto-approve
 
 terraform-bash: ## Run bash to troubleshooting
-	docker run --rm -v $$PWD:/app -v $$HOME/.ssh:/root/.ssh -w /app -e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY --entrypoint "" hashicorp/terraform:$(TERRAFORM_VERSION) sh
+	docker run --rm -i -v $$PWD:/app -v $$HOME/.ssh:/root/.ssh -w /app -e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY --entrypoint "sh" hashicorp/terraform:$(TERRAFORM_VERSION)

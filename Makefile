@@ -7,7 +7,7 @@ export $(shell sed 's/=.*//' $(cnf))
 # Get the latest tag
 TAG=$(shell git describe --tags --abbrev=0)
 GIT_COMMIT=$(shell git log -1 --format=%h)
-TERRAFORM_VERSION=0.12.24
+TERRAFORM_VERSION=0.13.3
 
 # HELP
 # This will output the help for each task
